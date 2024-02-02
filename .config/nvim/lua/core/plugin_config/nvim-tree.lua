@@ -5,6 +5,16 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 require("nvim-tree").setup({
+	diagnostics = {
+		enable = true,
+		show_on_dirs = true,
+		icons = {
+			hint = "",
+			info = "",
+			warning = "",
+			error = "",
+		},
+	},
 	sort = {
 		sorter = "case_sensitive",
 	},

@@ -19,7 +19,7 @@ return require("packer").startup(function(use)
 			require("nvim-autopairs").setup({})
 		end,
 	})
-	use("tpope/vim-commentary")
+	use("numToStr/Comment.nvim")
 	use("folke/tokyonight.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("nvim-tree/nvim-web-devicons")
