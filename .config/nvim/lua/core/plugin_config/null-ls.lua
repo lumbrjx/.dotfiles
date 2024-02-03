@@ -9,7 +9,7 @@ nls.setup({
 		--	nlsb.diagnostics.tsc,
 		-- formatters
 		nlsb.diagnostics.eslint_d.with({
-			filetypes = { "javascript", "typescript", "jsx", "tsx", "react", "html", "css" },
+			filetypes = { "javascript", "typescript", "jsx", "tsx", "react", "html", "css","ts" },
 			condition = function()
 				return nls.utils.root_pattern(
 					"eslint.config.js",

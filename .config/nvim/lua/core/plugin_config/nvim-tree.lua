@@ -4,6 +4,53 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+require("colorizer").setup()
+require("nvim-web-devicons").setup({
+	override = {
+		go = {
+			icon = "󰟓",
+			color = "#519aba",
+			cterm_color = "74",
+			name = "Go",
+		},
+
+		["node_modules"] = {
+			icon = "",
+			color = "#8CC84B",
+			cterm_color = "197",
+			name = "NodeModules",
+		},
+		["package.json"] = {
+			icon = "󰎙",
+			color = "#8CC84B",
+			cterm_color = "197",
+			name = "PackageJson",
+		},
+		["package-lock.json"] = {
+			icon = "󰎙",
+			color = "#6b9740",
+			cterm_color = "52",
+			name = "PackageLockJson",
+		},
+
+		["svelte.config.js"] = {
+			icon = "󱎔",
+			color = "#ff3e00",
+			cterm_color = "196",
+			name = "SvelteConfig",
+		},
+
+		["tsconfig.json"] = {
+			icon = "",
+			color = "#519aba",
+			cterm_color = "74",
+			name = "TSConfig",
+		},
+	},
+
+	default = false,
+	color_icons = true,
+})
 require("nvim-tree").setup({
 	diagnostics = {
 		enable = true,
@@ -30,7 +77,7 @@ require("nvim-tree").setup({
 		git_clean = false,
 		no_buffer = false,
 		no_bookmark = false,
-		custom = {},
+		custom = { ".git" },
 		exclude = {},
 	},
 })
