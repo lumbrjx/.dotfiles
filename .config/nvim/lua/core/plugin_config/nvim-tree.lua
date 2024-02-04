@@ -13,6 +13,18 @@ require("nvim-web-devicons").setup({
 			cterm_color = "74",
 			name = "Go",
 		},
+		["go.mod"] = {
+			icon = "",
+			color = "#519aba",
+			cterm_color = "74",
+			name = "Go",
+		},
+		["go.sum"] = {
+			icon = "",
+			color = "#519aba",
+			cterm_color = "74",
+			name = "Go",
+		},
 
 		["node_modules"] = {
 			icon = "",
