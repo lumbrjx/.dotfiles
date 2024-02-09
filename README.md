@@ -9,3 +9,8 @@
 - terminal : alacritty
 - DS : lightdm
 - tmux
+
+## notes
+- change rofii folder to rofi
+- change configg.rasi file to config.rasi
+- change rofi-themes folder to themes
