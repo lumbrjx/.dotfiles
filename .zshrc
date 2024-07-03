@@ -104,3 +104,15 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.volta/bin:$PATH"
+export PATH="$PATH:/path/to/pkg/mod/google.golang.org/protobuf@v1.34.1/cmd"
+
+
+. "$HOME/.cargo/env"
+
+# Created by `pipx` on 2024-07-01 14:15:48
+export PATH="$PATH:/home/clog/.local/bin"

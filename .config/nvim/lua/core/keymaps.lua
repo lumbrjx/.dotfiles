@@ -24,3 +24,8 @@ vim.api.nvim_set_keymap("x", "<Leader>c", [[:lua ToggleComments()<CR>]], { norem
 
 -- Map <Leader>s to save the file
 vim.api.nvim_set_keymap("n", "<Leader>s", [[:w<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_set_option("clipboard", "unnamed")
+
+vim.keymap.set("n", "<leader>r", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
