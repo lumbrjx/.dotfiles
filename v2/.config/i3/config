@@ -56,6 +56,8 @@ bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
+bindsym $mod+w exec gnome-control-center
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -252,3 +254,4 @@ exec alacritty
 exec_always feh --bg-scale ~/Documents/stocks/wall.jpg
 exec_always --no-startup-id polybar
 exec_always --no-startup-id picom
+
