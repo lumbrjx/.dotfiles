@@ -57,6 +57,7 @@ bindsym $mod+Shift+a kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
 bindsym $mod+w exec gnome-control-center
+bindsym $mod+u exec obsidian
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -162,7 +163,7 @@ assign [class="Postman"] $ws3
 bindsym $mod+Shift+c reload
 bindsym $mod+i exec flameshot gui 
 bindsym $mod+Shift+n exec ~/scripts/switchKeyboardLayout.sh 
-
+bindsym $mod+b exec --no-startup-id rofi-bluetooth
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
