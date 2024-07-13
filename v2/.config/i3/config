@@ -153,8 +153,9 @@ bindsym $mod+Shift+ccedilla move container to workspace number $ws9
 bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 assign [class="Alacritty"] $ws2
-assign [class="Firefox-esr"] $ws3
-assign [class="Postman"] $ws3
+assign [class="Brave-browser"] $ws3
+assign [class="Firefox-esr"] $ws4
+assign [class="Postman"] $ws5
 # assign [class="Blueman-manager"] $ws1
 # assign [class="Nm-applet"] $ws1 
 
@@ -164,6 +165,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+i exec flameshot gui 
 bindsym $mod+Shift+n exec ~/scripts/switchKeyboardLayout.sh 
 bindsym $mod+b exec --no-startup-id rofi-bluetooth
+bindsym $mod+n exec --no-startup-id ~/rofi-wifi-menu/rofi-wifi-menu.sh 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -250,7 +252,7 @@ bindsym $mod+r mode "resize"
 
 
 bindsym $mod+shift+x exec i3lock --nofork -i ~/Documents/stocks/wall.jpg
-exec firefox
+exec brave-browser
 exec alacritty
 exec_always feh --bg-scale ~/Documents/stocks/wall.jpg
 exec_always --no-startup-id polybar
