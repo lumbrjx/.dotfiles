@@ -8,22 +8,22 @@ nls.setup({
 		-- nlsb.diagnostics.protolint,
 		--	nlsb.diagnostics.tsc,
 		-- formatters
-		nlsb.diagnostics.eslint_d.with({
-			filetypes = { "javascript", "typescript", "jsx", "tsx", "react", "html", "css","ts" },
-			condition = function()
-				return nls.utils.root_pattern(
-					"eslint.config.js",
-					-- https://eslint.org/docs/user-guide/configuring/configuration-files#configuration-file-formats
-					".eslintrc",
-					".eslintrc.js",
-					".eslintrc.cjs",
-					".eslintrc.yaml",
-					".eslintrc.yml",
-					".eslintrc.json",
-					"package.json"
-				)(vim.api.nvim_buf_get_name(0)) ~= nil
-			end,
-		}),
+		-- nlsb.diagnostics.eslint_d.with({
+		-- 	filetypes = { "javascript", "typescript", "jsx", "tsx", "react", "html", "css","ts" },
+		-- 	condition = function()
+		-- 		return nls.utils.root_pattern(
+		-- 			"eslint.config.js",
+		-- 			-- https://eslint.org/docs/user-guide/configuring/configuration-files#configuration-file-formats
+		-- 			".eslintrc",
+		-- 			".eslintrc.js",
+		-- 			".eslintrc.cjs",
+		-- 			".eslintrc.yaml",
+		-- 			".eslintrc.yml",
+		-- 			".eslintrc.json",
+		-- 			"package.json"
+		-- 		)(vim.api.nvim_buf_get_name(0)) ~= nil
+		-- 	end,
+		-- }),
 		nlsb.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "mysql" },
 		}),

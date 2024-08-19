@@ -19,6 +19,12 @@ return require("packer").startup(function(use)
 			require("nvim-autopairs").setup({})
 		end,
 	})
+	use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+	use {
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } }
+	}
 	use("numToStr/Comment.nvim")
 	use("folke/tokyonight.nvim")
 	use("nvim-lualine/lualine.nvim")
