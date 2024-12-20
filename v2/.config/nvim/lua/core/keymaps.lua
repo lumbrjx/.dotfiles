@@ -4,13 +4,14 @@ vim.opt.autowrite = true
 vim.opt.autoread = true
 vim.opt.showcmd = true
 vim.opt.cursorline = true
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
+vim.o.undofile = true
 vim.g.NERDTreeShowHidden = 1
 -- Function to toggle comments based on file type
 function ToggleComments()
@@ -23,7 +24,7 @@ end
 vim.api.nvim_set_keymap("x", "<Leader>c", [[:lua ToggleComments()<CR>]], { noremap = true, silent = true })
 
 -- Map <Leader>s to save the file
-vim.api.nvim_set_keymap("n", "<Leader>s", [[:w<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>s", [[:wa!<CR>]], { noremap = true, silent = true })
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 

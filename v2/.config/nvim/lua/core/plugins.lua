@@ -20,6 +20,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+	use "tpope/vim-fugitive"
+	use "mbbill/undotree"
 	use {
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
@@ -38,6 +40,9 @@ return require("packer").startup(function(use)
 		tag = "0.1.5",
 		--or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use({
+		"lewis6991/gitsigns.nvim",
 	})
 	use({
 		"VonHeikemen/lsp-zero.nvim",
