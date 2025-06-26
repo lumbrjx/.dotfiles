@@ -4,7 +4,7 @@ return {
   priority = 1000,
   opts = {
     style = "night",
-    transparent = true,
+    transparent = false,
     terminal_colors = true,
   },
 }
