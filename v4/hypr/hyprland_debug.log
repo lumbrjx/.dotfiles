@@ -1,0 +1,12 @@
+[ ERROR ] Unknown option '--verbose' !
+usage: Hyprland [arg [...]].
+
+Arguments:
+    --help              -h       - Show this message again
+    --config FILE       -c FILE  - Specify config file to use
+    --socket NAME                - Sets the Wayland socket name (for Wayland socket handover)
+    --wayland-fd FD              - Sets the Wayland socket fd (for Wayland socket handover)
+    --systeminfo                 - Prints system infos
+    --i-am-really-stupid         - Omits root user privileges check (why would you do that?)
+    --verify-config              - Do not run Hyprland, only print if the config has any errors
+    --version           -v       - Print this binary's version
