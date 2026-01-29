@@ -3,39 +3,38 @@
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", sans-serif;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
     min-height: 0;
 }
 
 window#waybar {
     background-color: #1a1b26; /* TokyoNight dark */
-    border: 1px solid #414868;
-    border-radius: 12px; /* Rounded bar corners */
-    color: #c0caf5;
+    border: 1.5px solid #b4befe;
+    border-radius: 8px; /* Rounded bar corners */
+    color: #b4befe;
     transition: background-color 0.3s;
-    margin: 6px 8px; /* Space from screen edges to "float" */
-    padding: 0 4px;
+    margin: 4px 8px; /* Space from screen edges to "float" */
+    padding: 0 0px;
 }
 
 /* Left modules */
 #custom-rofi {
     color: #1a1b26;
-    padding: 0 12px;
-    font-size: 14px;
+    padding: 0 8px;
+    font-size: 12px;
     border-radius: 8px;
 }
 
 #workspaces {
-    margin: 0 4px;
+    margin: 0 2px;
 }
 
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 4px;
     background: transparent;
     color: #565f89;
     border: none;
     min-width: 20px;
-    border-radius: 6px;
 }
 
 #workspaces button:hover {
