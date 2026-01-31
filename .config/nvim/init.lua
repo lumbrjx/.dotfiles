@@ -28,4 +28,3 @@ vim.opt.rtp:prepend(lazypath)
 -- Now it's safe to require your lazy config
 require("config.lazy")
 require("keymaps")
-

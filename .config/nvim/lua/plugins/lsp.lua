@@ -6,37 +6,42 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-        ensure_installed = { "lua_ls", "ts_ls" },
+      ensure_installed = { "lua_ls", "tsserver", "gopls", "buf_ls" }, -- added buf_ls
     },
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
-},
-{
-    "neovim/nvim-lspconfig",
-    lazy = false,
-    config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  },
+  {
+  "neovim/nvim-lspconfig",
+  lazy = false,
+  config = function()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local flags = { debounce_text_changes = 100 }
 
-      local lspconfig = require("lspconfig")
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.solargraph.setup({
-        capabilities = capabilities
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities
-      })
+    -- List of servers
+    local servers = { "lua_ls", "tsserver", "gopls", "buf_ls", "solargraph", "html" }
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-    end,
-  }
+    for _, lsp in ipairs(servers) do
+      vim.lsp.config[lsp].setup({
+        capabilities = capabilities,
+        flags = flags,
+      })
+    end
+
+    -- Auto-refresh diagnostics
+    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+      callback = function()
+        vim.diagnostic.reset()
+        vim.diagnostic.show()
+      end,
+    })
+
+    -- Keymap to restart LSP quickly
+    vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
+  end,
 }
+
+}
+

@@ -11,8 +11,8 @@
 - tmux
 
 
-## v4 : Major change
-- distro : fedora 42
+## v2 : Major change
+- distro : fedora 42/43
 - wm : hyperland
 - bar : waybar
 - DS : gnomedm

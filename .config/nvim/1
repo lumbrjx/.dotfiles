@@ -81,7 +81,7 @@ vim.keymap.set("v", "<leader>ai", function()
 
   local start_pos = vim.fn.getpos("'<")
   local end_pos = vim.fn.getpos("'>")
-  local lines = vim.api.nvim_buf_get_lines(0, start_pos[2] - 1, end_pos[2], false)
+  local lines = vim.api.nvim_buf_get_lines(0, start_pos[2]-1, end_pos[2], false)
   local selection = table.concat(lines, "\n")
 
   gen.command(prompt .. "\n\nContext:\n" .. selection)
@@ -111,5 +111,6 @@ gen.write_to_file = function(prompt, output)
     vim.notify("💾 Output written to: " .. output)
   end)
 end
+
 vim.keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat<cr>", { desc = "Chat with LLM" })
 vim.keymap.set("n", "<leader>ci", "<cmd>CodeCompanionInline<cr>", { desc = "Inline edit with LLM" })
