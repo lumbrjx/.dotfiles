@@ -198,6 +198,7 @@ for file in .tmux.conf .zshrc; do
     chown $USER:$USER "$DEST"
 done
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Make scripts executable
 echo "Setting executable permissions for scripts..."
 chmod +x "$DOTFILES_DIR"/scripts/*.sh
