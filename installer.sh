@@ -156,7 +156,7 @@ declare -A config_paths=(
     ["hypr"]="~/.config/hypr"
     ["nvim"]="~/.config/nvim"
     ["polybar"]="~/.config/polybar"
-    ["rofii"]="~/.config/rofi"
+    ["rofi"]="~/.config/rofi"
     ["swaync"]="~/.config/swaync"
     ["waybar"]="~/.config/waybar"
 )
