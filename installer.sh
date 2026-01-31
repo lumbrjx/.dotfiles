@@ -140,7 +140,9 @@ fi
 echo "Setting up configuration files..."
 
 DOTFILES_DIR="$HOME/.dotfiles"
+BACKUP_DIR="$HOME/.dotfiles_backup_$(date +%Y%m%d%H%M%S)"
 
+# Clone repo if it doesn't exist
 if [ ! -d "$DOTFILES_DIR" ]; then
     git clone https://github.com/lumbrjx/.dotfiles.git "$DOTFILES_DIR"
 fi
@@ -149,34 +151,50 @@ cd "$DOTFILES_DIR"
 git fetch --all
 git checkout latest
 
-echo "Deploying configuration files..."
+echo "Backing up existing configs to $BACKUP_DIR..."
+mkdir -p "$BACKUP_DIR"
 
 declare -A config_paths=(
-    ["alacritty"]="~/.config/alacritty"
-    ["hypr"]="~/.config/hypr"
-    ["nvim"]="~/.config/nvim"
-    ["polybar"]="~/.config/polybar"
-    ["rofi"]="~/.config/rofi"
-    ["swaync"]="~/.config/swaync"
-    ["waybar"]="~/.config/waybar"
+    ["alacritty"]="$HOME/.config/alacritty"
+    ["hypr"]="$HOME/.config/hypr"
+    ["nvim"]="$HOME/.config/nvim"
+    ["polybar"]="$HOME/.config/polybar"
+    ["rofii"]="$HOME/.config/rofi"
+    ["swaync"]="$HOME/.config/swaync"
+    ["waybar"]="$HOME/.config/waybar"
 )
 
+# Copy directories
 for src in "${!config_paths[@]}"; do
     dest="${config_paths[$src]}"
+    if [ -d "$dest" ]; then
+        echo "Backing up existing $dest..."
+        mkdir -p "$BACKUP_DIR"
+        mv "$dest" "$BACKUP_DIR/"
+    fi
+    echo "Deploying $src configuration..."
     mkdir -p "$dest"
     cp -r ".config/$src/"* "$dest/"
 done
 
-# Copy single files
-cp -f .tmux.conf ~/.tmux.conf
-cp -f .zshrc ~/.zshrc
+# Copy individual files
+for file in .tmux.conf .zshrc; do
+    if [ -f "$HOME/$file" ]; then
+        echo "Backing up existing $file..."
+        mv "$HOME/$file" "$BACKUP_DIR/"
+    fi
+    echo "Deploying $file..."
+    cp -f "$file" "$HOME/"
+done
 
 # Make scripts executable
-chmod +x scripts/*.sh
-chmod +x ~/.config/waybar/toggle-waybar.sh
-chmod +x ~/.config/polybar/*.sh
-chmod +x ~/.config/rofi/*.sh || true
+echo "Setting executable permissions for scripts..."
+chmod +x "$DOTFILES_DIR"/scripts/*.sh
+[ -f "$HOME/.config/waybar/toggle-waybar.sh" ] && chmod +x "$HOME/.config/waybar/toggle-waybar.sh"
+[ -d "$HOME/.config/polybar" ] && chmod +x "$HOME/.config/polybar/"*.sh
+[ -d "$HOME/.config/rofi" ] && chmod +x "$HOME/.config/rofi/"*.sh || true
 
 echo "Configuration deployed successfully!"
-echo "All done! Log out and back in for zsh as default shell."
+echo "All done! Backups of old configs are in $BACKUP_DIR."
+echo "Log out and back in for zsh as default shell."
 
