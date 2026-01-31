@@ -1,5 +1,5 @@
-local d ={
-{
+return {
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000, -- Load before everything else
@@ -11,4 +11,3 @@ local d ={
 		end,
 	},
 }
-return {}

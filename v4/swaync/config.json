@@ -1,8 +1,0 @@
-{
-  "position": "top-right",
-  "layer": "overlay",
-  "layer-shell": true,
-  "notification-default-timeout": 5000,
-  "max-visible": 5
-}
-

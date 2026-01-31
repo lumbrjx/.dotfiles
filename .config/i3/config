@@ -40,6 +40,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -56,6 +58,9 @@ bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
+bindsym $mod+w exec gnome-control-center
+bindsym $mod+u exec obsidian
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -63,10 +68,10 @@ bindsym $mod+d exec rofi -show run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
+bindsym $mod+j focus down 
+bindsym $mod+k focus up 
+bindsym $mod+l focus right 
+bindsym $mod+m focus left 
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -75,10 +80,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+bindsym $mod+Shift+j move down 
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+m move left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -126,33 +131,55 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+ampersand workspace number $ws1
-bindsym $mod+eacute workspace number $ws2
-bindsym $mod+quotedbl workspace number $ws3
-bindsym $mod+apostrophe workspace number $ws4
-bindsym $mod+parenleft workspace number $ws5
-bindsym $mod+minus workspace number $ws6
-bindsym $mod+egrave workspace number $ws7
-bindsym $mod+underscore workspace number $ws8
-bindsym $mod+ccedilla workspace number $ws9
-bindsym $mod+agrave workspace number $ws10
+# bindsym $mod+ampersand workspace number $ws1
+# bindsym $mod+eacute workspace number $ws2
+# bindsym $mod+quotedbl workspace number $ws3
+# bindsym $mod+apostrophe workspace number $ws4
+# bindsym $mod+parenleft workspace number $ws5
+# bindsym $mod+minus workspace number $ws6
+# bindsym $mod+egrave workspace number $ws7
+# bindsym $mod+underscore workspace number $ws8
+# bindsym $mod+ccedilla workspace number $ws9
+# bindsym $mod+agrave workspace number $ws10
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand move container to workspace number $ws1
-bindsym $mod+Shift+eacute move container to workspace number $ws2
-bindsym $mod+Shift+quotedbl move container to workspace number $ws3
-bindsym $mod+Shift+apostrophe move container to workspace number $ws4
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+minus move container to workspace number $ws6
-bindsym $mod+Shift+egrave move container to workspace number $ws7
-bindsym $mod+Shift+underscore move container to workspace number $ws8
-bindsym $mod+Shift+ccedilla move container to workspace number $ws9
-bindsym $mod+Shift+agrave move container to workspace number $ws10
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 assign [class="Alacritty"] $ws2
-assign [class="Firefox-esr"] $ws3
+assign [class="Brave-browser"] $ws3
+assign [class="Firefox-esr"] $ws4
+assign [class="Discord"] $ws1
+assign [class="Postman"] $ws5
+# assign [class="Blueman-manager"] $ws1
+# assign [class="Nm-applet"] $ws1 
+
+# assign [class="Pavucontrol"] $ws1 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+bindsym $mod+i exec flameshot gui 
+bindsym $mod+Shift+n exec ~/scripts/switchKeyboardLayout.sh 
+bindsym $mod+b exec --no-startup-id rofi-bluetooth
+bindsym $mod+n exec --no-startup-id ~/rofi-wifi-menu/rofi-wifi-menu.sh 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -181,6 +208,8 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+
+		
 }
 
 bindsym $mod+r mode "resize"
@@ -189,11 +218,11 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # Borders
         # Also removes all title bars
-        for_window [class="^.*"] border pixel 2 
-        default_border pixel 2
-		default_floating_border pixel 2
-        # Hide borders at the edge of the screen
-        hide_edge_borders smart
+        for_window [class="^.*"] border pixel 3 
+         default_border pixel 2 
+		 default_floating_border pixel 2 
+         # Hide borders at the edge of the screen
+         hide_edge_borders smart
 
         # Set colours various window states
         # Syntax: client.<class> <border> <background> <text> [<indicator> [<child_border>]]
@@ -217,26 +246,30 @@ bindsym $mod+r mode "resize"
             # unfocused	    #333333	#222222	    #888888	#292d2e	    #222222
             # urgent	    #2f343a	#900000	    #ffffff	#900000	    #900000
             # placeholder	#000000	#0c0c0c	    #ffffff	#000000 	#0c0c0c
-        client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce   #9aa5ce
-        client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
-        client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
-
+         client.focused           #bb9af7 #364A82 #bb9af7 #bb9af7   #bb9af7
+		 client.focused_inactive  #16161d #16161d #bb9af7 #16161d   #16161d
+         client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
+        #
     # Gaps
         # gaps inner|outer|horizontal|vertical|top|right|bottom|left <amount>
         # Sets default amount pixels of inner or outer gap
         # the inner affects spacing around each view
         # the outer affects the spacing around each workspace
         # To reduce or remove outer gaps, outer gaps can be set to a negative value.
-        gaps inner 5
-        gaps outer 2
-        gaps top 2
-        gaps bottom 2
+        gaps inner 4 
+        gaps outer 4
+        gaps top 4
+        gaps bottom 4
 
         # Hide gaps when there is only 1 window
-        smart_gaps on
+        smart_gaps on 
 
-bindsym $mod+shift+x exec i3lock 
-exec firefox
+
+bindsym $mod+shift+x exec i3lock --nofork -i ~/Documents/stocks/wall.jpg
+exec brave-browser
 exec alacritty
-exec_always feh --bg-scale /home/clog/Documents/stocks/wall.jpg
+exec discord
+exec_always feh --bg-scale ~/Documents/stocks/wall.jpg
 exec_always --no-startup-id polybar
+exec_always --no-startup-id picom
+
