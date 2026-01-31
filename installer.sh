@@ -151,40 +151,51 @@ cd "$DOTFILES_DIR"
 git fetch --all
 git checkout latest
 
+echo "Fixing permissions to allow backups..."
+sudo chown -R $USER:$USER "$HOME/.config" "$HOME/.tmux.conf" "$HOME/.zshrc" 2>/dev/null || true
+
 echo "Backing up existing configs to $BACKUP_DIR..."
 mkdir -p "$BACKUP_DIR"
 
+# Config directories to deploy
 declare -A config_paths=(
     ["alacritty"]="$HOME/.config/alacritty"
     ["hypr"]="$HOME/.config/hypr"
     ["nvim"]="$HOME/.config/nvim"
     ["polybar"]="$HOME/.config/polybar"
-    ["rofi"]="$HOME/.config/rofi"
+    ["rofii"]="$HOME/.config/rofi"
     ["swaync"]="$HOME/.config/swaync"
     ["waybar"]="$HOME/.config/waybar"
 )
 
-# Copy directories
+# Backup and deploy directories
 for src in "${!config_paths[@]}"; do
     dest="${config_paths[$src]}"
     if [ -d "$dest" ]; then
         echo "Backing up existing $dest..."
-        mkdir -p "$BACKUP_DIR"
         mv "$dest" "$BACKUP_DIR/"
     fi
     echo "Deploying $src configuration..."
     mkdir -p "$dest"
     cp -r ".config/$src/"* "$dest/"
+    chmod -R 755 "$dest"
+    chown -R $USER:$USER "$dest"
 done
 
-# Copy individual files
+# Backup and deploy single files
 for file in .tmux.conf .zshrc; do
-    if [ -f "$HOME/$file" ]; then
+    SRC="$DOTFILES_DIR/$file"
+    DEST="$HOME/$file"
+
+    if [ -f "$DEST" ]; then
         echo "Backing up existing $file..."
-        mv "$HOME/$file" "$BACKUP_DIR/"
+        mv "$DEST" "$BACKUP_DIR/"
     fi
+
     echo "Deploying $file..."
-    cp -f "$file" "$HOME/"
+    cp -f "$SRC" "$DEST"
+    chmod 644 "$DEST"
+    chown $USER:$USER "$DEST"
 done
 
 # Make scripts executable
