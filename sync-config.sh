@@ -11,19 +11,17 @@ BACKUP_DIR="$DOTFILES_DIR/backups_$(date +%Y%m%d_%H%M%S)"
 # ---------------------------
 echo "🛡 Backing up current .dotfiles to $BACKUP_DIR..."
 mkdir -p "$BACKUP_DIR"
-cp -r "$DOTFILES_DIR/"* "$BACKUP_DIR/"
-
+find "$DOTFILES_DIR" -maxdepth 1 -mindepth 1 ! -name 'backups_*' -exec cp -r {} "$BACKUP_DIR/" \;
 # ---------------------------
 # 2️⃣ Copy local configs into repo
 # ---------------------------
 declare -A config_paths=(
-    ["$HOME/.config/alacritty"]="alacritty"
-    ["$HOME/.config/hypr"]="hypr"
-    ["$HOME/.config/nvim"]="nvim"
-    ["$HOME/.config/polybar"]="polybar"
-    ["$HOME/.config/rofi"]="rofi"
-    ["$HOME/.config/swaync"]="swaync"
-    ["$HOME/.config/waybar"]="waybar"
+    ["$HOME/.config/alacritty"]=".config/alacritty"
+    ["$HOME/.config/hypr"]=".config/hypr"
+    ["$HOME/.config/nvim"]=".config/nvim"
+    ["$HOME/.config/rofi"]=".config/rofi"
+    ["$HOME/.config/swaync"]=".config/swaync"
+    ["$HOME/.config/waybar"]=".config/waybar"
 )
 
 for src in "${!config_paths[@]}"; do
@@ -37,6 +35,12 @@ done
 cp -f ~/.tmux.conf "$DOTFILES_DIR/.tmux.conf"
 cp -f ~/.zshrc "$DOTFILES_DIR/.zshrc"
 
+read -rp "Do you want to create a new commit? (y/N): " COMMIT_CHANGES
+COMMIT_CHANGES=${COMMIT_CHANGES:-N}
+if [[ ! "$COMMIT_CHANGES" =~ [yY] ]]; then
+    echo "Changes copied to .dotfiles but not committed."
+    exit 0
+fi
 # ---------------------------
 # 3️⃣ Fetch tags and determine new version
 # ---------------------------

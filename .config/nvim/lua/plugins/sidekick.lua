@@ -25,7 +25,7 @@ return {
       "<leader>ck",
       function() require("sidekick.cli").toggle() end,
       desc = "Sidekick Toggle",
-      mode = { "n", "t", "i", "x" },
+      mode = { "n", "x" },
     },
     {
       "<leader>aa",
