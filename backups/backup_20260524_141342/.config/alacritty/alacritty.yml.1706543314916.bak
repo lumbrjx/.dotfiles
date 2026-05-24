@@ -1,0 +1,57 @@
+items:
+  - colors:
+      name: Atelierseaside (light)
+      author: Chris Kempson
+      primary:
+        background: "#f0fff0"
+        foreground: "#5e6e5e"
+      cursor:
+        text: "#f0fff0"
+        cursor: "#5e6e5e"
+      normal:
+        black: "#131513"
+        red: "#e6193c"
+        green: "#29a329"
+        yellow: "#c3c322"
+        blue: "#3d62f5"
+        magenta: "#ad2bee"
+        cyan: "#1999b3"
+        white: "#8ca68c"
+      bright:
+        black: "#687d68"
+        red: "#e6193c"
+        green: "#29a329"
+        yellow: "#c3c322"
+        blue: "#3d62f5"
+        magenta: "#ad2bee"
+        cyan: "#1999b3"
+        white: "#f0fff0"
+  - theme: Atelierseaside.light
+colors:
+  # Default colors
+  primary:
+    background: '#000000'
+    foreground: '#dddddd'
+
+  # Normal colors
+  normal:
+    black: '#000000'
+    red: '#cc0403'
+    green: '#19cb00'
+    yellow: '#cecb00'
+    blue: '#0d73cc'
+    magenta: '#cb1ed1'
+    cyan: '#0dcdcd'
+    white: '#dddddd'
+
+  # Bright colors
+  bright:
+    black: '#767676'
+    red: '#f2201f'
+    green: '#23fd00'
+    yellow: '#fffd00'
+    blue: '#1a8fff'
+    magenta: '#fd28ff'
+    cyan: '#14ffff'
+    white: '#ffffff'
+theme: Kitty
