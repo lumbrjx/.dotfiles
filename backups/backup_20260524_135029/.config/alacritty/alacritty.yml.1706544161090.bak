@@ -1,0 +1,88 @@
+schemes:
+  # Tokyo Night theme, based on both:
+  #   https://github.com/ghifarit53/tokyonight-vim
+  #   https://github.com/enkia/tokyo-night-vscode-theme
+  tokyo-night:
+    # Default colors
+    &tokyo-night
+    primary:
+      background: '#1a1b26'
+      foreground: '#a9b1d6'
+
+    # Normal colors
+    normal:
+      black: '#32344a'
+      red: '#f7768e'
+      green: '#9ece6a'
+      yellow: '#e0af68'
+      blue: '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan: '#449dab'
+      white: '#787c99'
+
+    # Bright colors
+    bright:
+      black: '#444b6a'
+      red: '#ff7a93'
+      green: '#b9f27c'
+      yellow: '#ff9e64'
+      blue: '#7da6ff'
+      magenta: '#bb9af7'
+      cyan: '#0db9d7'
+      white: '#acb0d0'
+
+  tokyo-night-storm:
+    # Default colors
+    &tokyo-night-storm
+    primary:
+      background: '#24283b'
+      foreground: '#a9b1d6'
+
+    # Normal colors
+    normal:
+      black: '#32344a'
+      red: '#f7768e'
+      green: '#9ece6a'
+      yellow: '#e0af68'
+      blue: '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan: '#449dab'
+      white: '#9699a8'
+
+    # Bright colors
+    bright:
+      black: '#444b6a'
+      red: '#ff7a93'
+      green: '#b9f27c'
+      yellow: '#ff9e64'
+      blue: '#7da6ff'
+      magenta: '#bb9af7'
+      cyan: '#0db9d7'
+      white: '#acb0d0'
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#00ff00'
+
+  # Normal colors
+  normal:
+    black: '#2e3436'
+    red: '#cc0000'
+    green: '#73d216'
+    yellow: '#edd400'
+    blue: '#3465a4'
+    magenta: '#75507b'
+    cyan: '#06989a'
+    white: '#d3d7cf'
+
+  # Bright colors
+  bright:
+    black: '#2e3436'
+    red: '#ef2929'
+    green: '#8ae234'
+    yellow: '#fce94f'
+    blue: '#729fcf'
+    magenta: '#ad7fa8'
+    cyan: '#34e2e2'
+    white: '#eeeeec'
+theme: Tango

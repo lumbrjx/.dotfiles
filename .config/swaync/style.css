@@ -62,6 +62,7 @@ trough {
 .notification .notification-content overlay {
   /* icons */
   margin: 4px;
+  -gtk-icon-size: 48px; /* add this line, default is usually 32px */
 }
 
 .notification-content .summary {

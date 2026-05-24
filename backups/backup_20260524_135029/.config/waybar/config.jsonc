@@ -1,0 +1,122 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 2,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "output": ["HDMI-A-1"],
+    
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/music"
+    ],
+    
+    "modules-center": [
+        "custom/rofi",
+        "clock"
+    ],
+    
+    "modules-right": [
+        "cpu",
+        "memory",
+        "network",
+        "pulseaudio",
+        "custom/notification",
+        "custom/power"
+    ],
+
+    "custom/rofi": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2", 
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+        }
+    },
+
+    "custom/music": {
+        "format": "{}",
+        "max-length": 40,
+        "interval": 2,
+        "exec": "playerctl metadata --format '♪ {{ title }} - {{ artist }}' 2>/dev/null || echo '♪ No music'",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+
+    "clock": {
+        "timezone": "Africa/Algiers",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M}"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false,
+        "interval": 2
+    },
+
+    "memory": {
+        "format": " {}%",
+        "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G"
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " Connected",
+        "tooltip-format": "{essid}: {ipaddr}",
+        "format-linked": " No IP",
+        "format-disconnected": "󰤮 Disconnected",
+        "on-click": "nm-connection-editor",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "󰝟",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "custom/notification": {
+        "format": "",
+        "tooltip": false,
+        "exec": "swaync-client -c",
+        "on-click": "swaync-client -t",
+        "on-click-right": "dunstctl close-all"
+    },
+    
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "echo 'Shutdown\nReboot\nLogout' | rofi -dmenu -p 'Power' | xargs -I {} sh -c 'case {} in Shutdown) systemctl poweroff;; Reboot) systemctl reboot;; Logout) hyprctl dispatch exit;; esac'"
+    }
+}
+

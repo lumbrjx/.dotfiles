@@ -65,7 +65,7 @@
     "clock": {
         "timezone": "Africa/Algiers",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%H:%M}",
+        "format": "{:%H:%M:%S}",
         "format-alt": "{:%Y-%m-%d %H:%M}"
     },
 

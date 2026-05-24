@@ -1,4 +1,4 @@
-tt.*
+sdaftt.*
 .tests
 doc/tags
 debug
@@ -6,3 +6,4 @@ debug
 foo.*
 *.log
 data
+data.

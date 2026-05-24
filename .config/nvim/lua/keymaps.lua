@@ -113,3 +113,4 @@ gen.write_to_file = function(prompt, output)
 end
 vim.keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat<cr>", { desc = "Chat with LLM" })
 vim.keymap.set("n", "<leader>ci", "<cmd>CodeCompanionInline<cr>", { desc = "Inline edit with LLM" })
+

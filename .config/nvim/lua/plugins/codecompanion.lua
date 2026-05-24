@@ -6,10 +6,11 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "j-hui/fidget.nvim",
     },
+
     opts = {
       strategies = {
         chat = {
-          adapter = "copilot",
+          adapter = "deepseek_coder",
         },
         inline = {
           adapter = "copilot",
@@ -23,7 +24,7 @@ return {
       },
       display = {
         chat = {
-         window = {
+          window = {
             position = "right",
             width = 0.35,
           },
@@ -41,28 +42,47 @@ return {
           },
         },
       },
-      adapters = {},
+      adapters = {
+        http = {}
+      },
     },
     config = function(_, opts)
-      opts.adapters.copilot = function()
+      opts.adapters = opts.adapters or {}
+      opts.adapters.http = opts.adapters.http or {}
+
+      opts.adapters.http.copilot = function()
         return require("codecompanion.adapters").extend("copilot", {})
       end
-      opts.adapters.llama2 = function()
+      opts.adapters.http.llama2 = function()
         return require("codecompanion.adapters").extend("ollama", {
           name = "llama2",
-          model = "llama2",
+          schema = { model = { default = "llama2" } },
         })
       end
-
-      opts.adapters.codellama = function()
+      opts.adapters.http.deepseek_coder = function()
+        return require("codecompanion.adapters").extend("ollama", {
+          name = "deepseek_coder",
+          schema = {
+            model = {
+              default = "deepseek-coder-v2",
+            },
+          },
+        })
+      end
+      opts.adapters.http.codellama = function()
         return require("codecompanion.adapters").extend("ollama", {
           name = "codellama",
-          model = "codellama",
+          schema = { model = { default = "codellama" } },
+        })
+      end
+      opts.adapters.http.llama3 = function()
+        return require("codecompanion.adapters").extend("ollama", {
+          name = "llama3",
+          schema = { model = { default = "llama3" } },
         })
       end
 
       require("codecompanion").setup(opts)
-
       vim.keymap.set("n", "<leader>cu", "<cmd>CodeCompanionActions<CR>",
         { desc = "Open CodeCompanion Action Palette" })
 
