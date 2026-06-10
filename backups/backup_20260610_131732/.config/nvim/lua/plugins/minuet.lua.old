@@ -1,0 +1,39 @@
+return {
+  {
+    "milanglacier/minuet-ai.nvim",
+    config = function()
+      require("minuet").setup({
+        provider = "openai_fim_compatible",
+        provider_options = {
+          openai_fim_compatible = {
+            api_key = "TERM",                              -- any non-empty string works
+            end_point = "http://localhost:11434/v1/completions",
+            model = "codellama:code",
+            name = "Ollama",
+            stream = true,
+            optional = {
+              max_tokens = 64,
+              temperature = 0,
+            },
+          },
+        },
+        virtualtext = {
+          auto_trigger_ft = { "*" },
+          auto_trigger_ignore_ft = {},
+          keymap = {
+            accept = "<Tab>",
+            accept_line = "<A-a>",
+            next = "<A-]>",
+            prev = "<A-[>",
+            dismiss = "<A-e>",
+          },
+        },
+        request_timeout = 15,  -- give CPU more time
+        throttle = 1500,       -- slower triggers, easier on CPU
+        notify = "debug",
+        context_window = 128,
+        n_completions = 1,
+      })
+    end,
+  },
+}
