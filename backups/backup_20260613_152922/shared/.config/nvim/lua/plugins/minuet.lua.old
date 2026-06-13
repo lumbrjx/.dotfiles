@@ -1,0 +1,39 @@
+return {
+  {
+    "milanglacier/minuet-ai.nvim",
+    config = function()
+      require("minuet").setup({
+        viprovider = "openai_fim_compatible",
+        provider_options = {
+          openai_fim_compatible = {
+            api_key = "CODESTRAL_API_KEY",
+            end_point = "https://codestral.mistral.ai/v1/fim/completions",
+            model = "codestral-latest",
+            name = "Codestral",
+            stream = true,
+            optional = {
+              max_tokens = 64,
+              temperature = 0,
+            },
+          },
+        },
+        virtualtext = {
+          auto_trigger_ft = { "*" }, -- explicit wildcard
+          auto_trigger_ignore_ft = {},
+          keymap = {
+            accept = "<Tab>", -- avoid Tab conflicts
+            accept_line = "<A-a>",
+            next = "<A-]>",   -- also manually triggers
+            prev = "<A-[>",   -- also manually triggers
+            dismiss = "<A-e>",
+          },
+        },
+        request_timeout = 10, -- your model needs time on CPU
+        throttle = 1000,
+        notify = "debug",
+        context_window = 128, -- tiny context, fits well within 4096 token limit
+        n_completions = 1,
+      })
+    end,
+  },
+}

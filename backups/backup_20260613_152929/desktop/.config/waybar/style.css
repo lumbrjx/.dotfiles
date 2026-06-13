@@ -1,0 +1,114 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #1a1b26; /* TokyoNight dark */
+    border: 1.5px solid #b4befe;
+    border-radius: 8px; /* Rounded bar corners */
+    color: #b4befe;
+    transition: background-color 0.3s;
+    margin: 4px 8px; /* Space from screen edges to "float" */
+    padding: 0 0px;
+}
+
+/* Left modules */
+#custom-rofi {
+    color: #1a1b26;
+    padding: 0 8px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+#workspaces {
+    margin: 0 2px;
+}
+
+#workspaces button {
+    padding: 0 4px;
+    background: transparent;
+    color: #565f89;
+    border: none;
+    min-width: 20px;
+}
+
+#workspaces button:hover {
+    color: #7aa2f7;
+    background: rgba(122, 162, 247, 0.1);
+}
+
+#workspaces button.active {
+    color: #7aa2f7;
+    background: rgba(122, 162, 247, 0.15);
+}
+
+/* Music module */
+#custom-music {
+    background: transparent;
+    color: #9ece6a;
+    padding: 0 8px;
+    margin: 0 4px;
+    border-radius: 6px;
+}
+
+/* Center module */
+#clock {
+    background: transparent;
+    color: #c0caf5;
+    font-weight: 600;
+    padding: 0 16px;
+    border-radius: 6px;
+}
+
+/* Right modules */
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-notification,
+#custom-power {
+    background: transparent;
+    padding: 0 8px;
+    margin-right: 6px;
+    border-radius: 6px;
+}
+
+#cpu { color: #f7768e; }
+#memory { color: #e0af68; }
+#network { color: #9ece6a; }
+#network.disconnected { color: #f7768e; }
+#pulseaudio { color: #bb9af7; }
+#pulseaudio.muted { color: #565f89; }
+#custom-notification { color: #ff9e64; }
+
+#custom-power:hover {
+    color: #ff7a93;
+}
+
+/* Tooltips */
+tooltip {
+    border-radius: 6px;
+    background-color: #24283b;
+    border: 1px solid #414868;
+}
+
+tooltip label {
+    color: #c0caf5;
+}
+
+/* Hover effects */
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-notification:hover,
+#custom-music:hover {
+    background: rgba(192, 202, 245, 0.08);
+    transition: background 0.3s;
+}
+
