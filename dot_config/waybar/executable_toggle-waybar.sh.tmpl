@@ -1,0 +1,5 @@
+{{- if eq .host "laptop" -}}
+{{ include ".fragments/toggle-waybar.laptop.sh" }}
+{{- else if eq .host "desktop" -}}
+{{ include ".fragments/toggle-waybar.desktop.sh" }}
+{{- end -}}

@@ -1,0 +1,3 @@
+{{- $host := promptStringOnce . "host" "Which machine is this (laptop/desktop)" -}}
+[data]
+    host = {{ $host | quote }}

@@ -1,0 +1,5 @@
+{{- if eq .host "laptop" -}}
+{{ include ".fragments/waybar-config.laptop.jsonc" }}
+{{- else if eq .host "desktop" -}}
+{{ include ".fragments/waybar-config.desktop.jsonc" }}
+{{- end -}}

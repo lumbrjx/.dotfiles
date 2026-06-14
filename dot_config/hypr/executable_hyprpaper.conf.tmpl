@@ -1,0 +1,5 @@
+{{- if eq .host "laptop" -}}
+{{ include ".fragments/hyprpaper.laptop.conf" }}
+{{- else if eq .host "desktop" -}}
+{{ include ".fragments/hyprpaper.desktop.conf" }}
+{{- end -}}

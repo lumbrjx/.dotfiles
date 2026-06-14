@@ -1,0 +1,4 @@
+# editor / backup cruft we never want managed
+**/*.old
+**/*.bak
+**/*.log
