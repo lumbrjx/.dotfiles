@@ -217,7 +217,6 @@ alias vim='nvim'
 alias c='clear'
 
 # Shell integrations
-eval "$(zoxide init --cmd cd zsh)"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH=$PATH:/usr/local/go/bin
@@ -233,3 +232,6 @@ fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# zoxide — must be last so nothing clobbers its `cd` hook
+eval "$(zoxide init --cmd cd zsh)"
