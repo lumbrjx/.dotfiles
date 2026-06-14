@@ -2,3 +2,7 @@
 **/*.old
 **/*.bak
 **/*.log
+
+# repo docs — keep them in the repo, never deploy into $HOME
+/README.md
+/DESKTOP-SETUP.md
